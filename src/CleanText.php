@@ -79,12 +79,12 @@ class CleanText
         return $textFiltered;
     }
 
-    public function removePunctuation(string $text)
+    public static function removePunctuation(string $text)
     {
         return preg_replace('/,|\.|\(|\[|\]|\)|!|\?|;|…|\{|\}|"|«|»|:|\*|\/|\||>|</', ' ', $text);
     }
 
-    public function removeDate(string $text)
+    public static function removeDate(string $text)
     {
         $month = '(janvier|january|février|february|mars|march|avril|april|mai|may|juin|june|juillet|july|août|august|septembre|september|octobre|october|novembre|november|décembre|december|jan|fev|feb|mar|avr|apr|jui|jun|juil|jul|aoû|aug|aout|aou|sept|oct|nov|dec|decembre)';
         // french format
