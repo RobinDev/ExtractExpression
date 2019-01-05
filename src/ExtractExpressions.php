@@ -148,7 +148,7 @@ class ExtractExpressions
      */
     public function getTrail(string $expression)
     {
-        if (null === $this->mergedExpressions) {
+        if (null === $this->expressions) {
             $this->extract();
         }
 
