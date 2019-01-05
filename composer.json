@@ -2,6 +2,7 @@
     "name": "ropendev/expression",
     "description": "Text Analyser: Extract Expression from a text and order it by density.",
     "homepage": "https://piedweb.com",
+    "license": "Apache-2.0",
     "authors": [
         {
             "name": ":Robin",
