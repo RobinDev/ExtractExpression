@@ -15,15 +15,15 @@ use \rOpenDev\curl\CurlRequest;
 $test = new \rOpenDev\ExtractExpression\ExtractExpression();
 $test->onlyInSentence     = true; // Default value: FALSE
 $test->expressionMaxWords = 5;    // Max expression size in words
+$test->keepTrail          = 5; // Don't keep trail for less than 3 occurences found ine one text
 $test->addContent("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed...");
 
 // Get Results
 $test->getExpressions(int max = 0); // @return array with expression => number
-$test->getExpressionsByDensity(int max = 0); // @return array with expression => number / number of expression * 100
 $test->getTrail('expression'); // @return array with sentence where we find expression (best with onlyInSentence = true)
 $test->getTrails(); // @return array with expression => array trails
 
-$test->getNumberOfWordsInText(); // @return string
+$test->getWordNumber(); // @return int
 ```
 
 ## Contribute

@@ -1,1 +1,1 @@
-{"php":"7.2.10-0ubuntu0.18.04.1","version":"2.13.1","rules":{"array_syntax":{"syntax":"short"}},"hashes":{"src\/ExtractExpression.php":4137902290,"src\/CleanText.php":192023574}}
+{"php":"7.2.10-0ubuntu0.18.04.1","version":"2.13.1","rules":{"array_syntax":{"syntax":"short"}},"hashes":{"src\/ExtractExpressions.php":2956408086,"src\/ExtractExpression.php":399218572,"src\/CleanText.php":470200816}}

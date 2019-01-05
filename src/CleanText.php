@@ -25,7 +25,7 @@ class CleanText
         'sa', 'se', 'ses', 'son', 'sur', 'ta', 'te', 'tes', 'toi', 'ton', 'tu', 'un', 'une', 'vos', 'votre', 'vous', 'puis', 'aussi',
         'c', 'd', 'j', 'l', 'à', 'm', 'n', 's', 't', 'y',
         'ceci', 'cela', 'celà', 'cet', 'cette', 'ici', 'ils', 'les', 'leurs', 'quel', 'quels', 'quelle', 'quelles', 'sans', 'soi',
-        'très', 'tout', 'toutes', 'tous', 'bien', 'bonne', 'peu', 'ça',
+        'très', 'tout', 'toutes', 'tous', 'bien', 'bonne', 'peu', 'ça', 'car',
 
         'été', 'étée', 'étées', 'étés', 'étant', 'suis', 'es', 'est', 'sommes', 'êtes', 'sont', 'serai', 'seras', 'sera', 'serons',
         'serez', 'seront', 'serais', 'serait', 'serions', 'seriez', 'seraient', 'étais', 'était', 'étions', 'étiez', 'étaient',
@@ -37,6 +37,7 @@ class CleanText
 
         'répondre', 'repondre', 'réponses', 'reply', 'bonjour', 'merci', 'supprimer', 'anonyme', 'signaler',
         'icone', 'flèche',
+        'similaires', 'fiches', 'voir', 'articles', 'favoris', 'ajouter',
 
         // Weird thing happen every day
         'http//www', 'https//www',
@@ -81,7 +82,7 @@ class CleanText
 
     public static function removePunctuation(string $text)
     {
-        return preg_replace('/,|\.|\(|\[|\]|\)|!|\?|;|…|\{|\}|"|«|»|:|\*|\/|\||>|</', ' ', $text);
+        return preg_replace('/,|\.|\(|\[|\]|\)|!|\?|;|…|\{|\}|"|«|»|:|\*|\/|\||>|<| - | + /', ' ', $text);
     }
 
     public static function removeDate(string $text)
@@ -139,9 +140,10 @@ class CleanText
     {
         // Permit to avoid stick words when span are used like block
         $html = str_replace('<', ' <', $html);
+        $html = self::removeSrOnly($html);
 
-        $dom = str_get_html($html);
-        if (false === $dom) { // If we failed to load the html in dom
+        $dom = new \simple_html_dom();
+        if (false === $dom->load($html)) { // If we failed to load the html in dom
             $text = self::stripHtmlTagsOldWay($html);
         } else {
             $text = $dom->plaintext;
@@ -149,5 +151,13 @@ class CleanText
         }
 
         return $text;
+    }
+
+    /**
+     * Not very good... avoid Jit error.
+     */
+    public static function removeSrOnly(string $html)
+    {
+        return preg_replace('/<span[^>]+class="[^>]*(screen-reader-only|sr-only)[^>]*"[^>]*>[^<]*<\/span>/si', ' ', $html);
     }
 }
