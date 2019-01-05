@@ -1,0 +1,32 @@
+{
+    "name": "ropendev/expression",
+    "description": "Text Analyser: Extract Expression from a text and order it by density.",
+    "homepage": "https://piedweb.com",
+    "authors": [
+        {
+            "name": ":Robin",
+            "email": "contact@robin-d.fr",
+            "homepage": "http://www.robin-d.fr/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "neitanod/forceutf8": "^2.0",
+        "athoshun/html-filter": "^2.0",
+        "ropendev/curl": "^1.0",
+        "ropendev/simple_html_dom": "^1.7"
+     },
+     "require-dev": {
+        "phpunit/phpunit": "^7.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "rOpenDev\\ExtractExpression\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "rOpenDev\\ExtractExpression\\Test\\": "Tests"
+        }
+    }
+}
