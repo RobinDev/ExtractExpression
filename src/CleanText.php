@@ -117,7 +117,7 @@ class CleanText
         return trim($text);
     }
 
-    public static function stipHtmlTagsOldWay(string $html)
+    public static function stripHtmlTagsOldWay(string $html)
     {
         // Often error because of limitation of JIT
         $textWithoutInvisible = preg_replace('@<(script|style|head|iframe|noframe|noscript|object|embed|noembed)[^>]*?>((?!<\1).)*<\/\1>@si', ' ', $html);
@@ -142,7 +142,7 @@ class CleanText
 
         $dom = str_get_html($html);
         if (false === $dom) { // If we failed to load the html in dom
-            $text = self::stipHtmlTagsOldWay($html);
+            $text = self::stripHtmlTagsOldWay($html);
         } else {
             $text = $dom->plaintext;
             $text = preg_replace('/ +/s', ' ', $text);
