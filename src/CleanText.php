@@ -60,7 +60,9 @@ class CleanText
         $sentences = [];
         if (preg_match_all(self::$regexSentence, $text, $matches, PREG_SET_ORDER, 0)) {
             foreach ($matches as $m) {
-                $sentences[] = preg_replace('/\s+/', ' ', $m[0]);
+                if (count(explode(' ', $m[0])) < 30) { // We keep only sentence with less than 30 words
+                    $sentences[] = preg_replace('/\s+/', ' ', $m[0]);
+                }
             }
         }
 
@@ -69,15 +71,7 @@ class CleanText
 
     public static function keepOnlySentence(string $text)
     {
-        $textFiltered = '';
-        if (preg_match_all(self::$regexSentence, $text, $matches, PREG_SET_ORDER, 0)) {
-            foreach ($matches as $m) {
-                $textFiltered .= $m[0].' ';
-            }
-            $textFiltered = preg_replace('/\s+/', ' ', $text);
-        }
-
-        return $textFiltered;
+        return implode(' ', $this->getSentences($text));
     }
 
     public static function removePunctuation(string $text)

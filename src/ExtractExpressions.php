@@ -9,7 +9,7 @@ class ExtractExpressions
 {
     public $onlyInSentence = false;
     public $expressionMaxWords = 5;
-    public $keepTrail = 5;
+    public $keepTrail = 3;
 
     protected $text;
 

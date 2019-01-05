@@ -13,7 +13,7 @@ class ExtractExpression
     /**
      * @var int Minimum value for wich one we keep a trail. Set to 0 to disabled keeping trail
      **/
-    public $keepTrail = 5;
+    public $keepTrail = 3;
 
     protected $words;
 
