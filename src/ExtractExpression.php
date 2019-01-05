@@ -100,7 +100,7 @@ class ExtractExpression
         $trail = [];
 
         foreach ($this->text as $text) {
-            $trail = array_merge($trail, $tex->getTrail($expression));
+            $trail = array_merge($trail, $text->getTrail($expression));
         }
 
         return $trail;
