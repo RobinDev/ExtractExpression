@@ -71,7 +71,7 @@ class CleanText
 
     public static function keepOnlySentence(string $text)
     {
-        return implode(' ', $this->getSentences($text));
+        return implode(' ', self::getSentences($text));
     }
 
     public static function removePunctuation(string $text)
